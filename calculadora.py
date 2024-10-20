@@ -15,13 +15,16 @@ def index():
             Title("Inicio")
         ),
         Body(
-            header(),
             Div(
-                main_layout(),
-                cls="container mx-auto p-6"
-            ), 
+              header(),
+                Div(
+                    main_layout(),
+                    cls="container mx-auto p-6 flex-grow"
+                ), 
             footer(),
-            cls="min—w—screen",
+            cls="flex flex-col min-h-screen"  
+            ),
+            cls="m-0"
         ),      
     )
 
@@ -44,13 +47,16 @@ def calcular_cola():
             Title("Calculadora de Teoria de Colas")
         ),
         Body(
-            header(),
             Div(
-                form,
-                cls="container mx-auto p-6"
-            ),
+              header(),
+                Div(
+                    form,
+                    cls="container mx-auto p-6 flex-grow"
+                ), 
             footer(),
-            cls="min—w—screen" 
+            cls="flex flex-col min-h-screen"  
+            ),
+            cls="m-0"
         ),      
     )
 
@@ -76,10 +82,15 @@ def resultado(tasa_llegada : float, tasa_servicio : float, servidores : int):
         ),
         Body(
             Div(
-                resultado,
-                cls="container mx-auto p-6"
+              header(),
+                Div(
+                    resultado,
+                    cls="container mx-auto p-6 flex-grow"
+                ), 
+            footer(),
+            cls="flex flex-col min-h-screen"  
             ),
-            cls="min—h—screen flex flex—col" 
+            cls="m-0"
         ),      
     )
     
