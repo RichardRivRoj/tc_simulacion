@@ -14,6 +14,25 @@ v_pn_temp = 1
 while v_pn_temp > 0:
     v_pn_temp = round(v_po*(v_rho**n), 4)
     if v_pn_temp > 0:
-        n = n + 1
+        n += 1
 
-print(n)
+def v_pn(n: int):
+    return round(v_po*(v_rho**n), 4)
+
+def v_fn(n: int):
+    v_pn_temp = 0
+    for i in range(0, n+1):
+        v_pn_temp += v_pn(i)
+        print(i)
+    return v_pn_temp
+
+def v_n():
+    n = 0
+    v_pn_temp = 1
+    while v_pn_temp > 0:
+        v_pn_temp = v_pn(n)
+        if v_pn_temp > 0:
+            n += 1
+    return n
+
+print(v_n())

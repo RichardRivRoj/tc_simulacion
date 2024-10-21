@@ -3,21 +3,32 @@ from component.header import header
 from component.footer import footer
 
 
-def resultado_mm1(v_lambda : float, v_mu : float):
+def resultado_mm1(v_lambda: float, v_mu: float):
     v_rho = v_lambda / v_mu
     v_po = (1 - v_rho)
     v_ls = round(v_rho / v_po, 0)
     v_lq = (v_rho**2) / v_po
     v_ws = v_ls / v_lambda
     v_wq = v_lq / v_lambda
-    n = 0
 
-    # Calcular n
-    v_pn_temp = 1
-    while v_pn_temp > 0:
-        v_pn_temp = round(v_po*(v_rho**n), 4)
-        if v_pn_temp > 0:
-            n = n + 1
+    def v_pn(n: int):
+        return round(v_po*(v_rho**n), 4)
+
+    def v_fn(n: int):
+        v_pn_temp = 0
+        for i in range(0, n+1):
+            v_pn_temp += v_pn(i)
+            print(i)
+        return v_pn_temp
+
+    def v_n():
+        n = 0
+        v_pn_temp = 1
+        while v_pn_temp > 0:
+            v_pn_temp = v_pn(n)
+            if v_pn_temp > 0:
+                n += 1
+        return n
 
     # Deberia crearse una tabla, y ponerse al lado del la parte de la calculadora
     return Div(
@@ -27,11 +38,16 @@ def resultado_mm1(v_lambda : float, v_mu : float):
                 Th("Pn"),
                 Th("Fn"),
             ),
-            # Reslver el for
+            # Resolver el for
             Tr(
                 Td("1"),
-                Td("PN"),
-                Td("FN"),
+                Td(v_pn(0)),
+                Td(v_fn(0)),
+            ),
+            Tr(
+                Td("1"),
+                Td(v_pn(1)),
+                Td(v_fn(1)),
             )
         ),
         H2(f"Factor de utilización (rho): {v_rho:.4f}", cls="text-lg text-green-500"), 
