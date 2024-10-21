@@ -38,7 +38,7 @@ def calcular_cola():
         Button("Calcular", type="submit", cls="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"),
         action = '/result_MM1',
         method="POST",
-        cls= "space-y-4"
+        cls= "pl-5 space-y-4"
     )
     
     return Html(
