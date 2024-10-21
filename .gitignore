@@ -1,4 +1,6 @@
 __pycache__
-/node_modules
+*.py[cod]
+*$py.class
+node_modules
 .venv
 /.vscode

@@ -34,7 +34,7 @@ def calcular_cola():
     form = Div(
         Form(
             H2("M/M/1", cls="font-medium text-black text-center"),
-            Label("Tasa de llegada: ", Input(name="tasa_llegada", type="number", cls="flex rounded-md border mt-2 px-3 py-1"), cls="block font-medium text-black", requires),
+            Label("Tasa de llegada: ", Input(name="tasa_llegada", type="number", cls="flex rounded-md border mt-2 px-3 py-1"), cls="block font-medium text-black"),
             Label("Tasa de servicio: ", Input(name="tasa_servicio", type="number", cls="flex rounded-md border mt-2 px-3 py-1"), cls="block font-medium text-black"),
             Label("Servidores: ", Input(name="servidores", type="number", cls="flex rounded-md border mt-2 px-3 py-1"), cls="block font-medium text-black"),
             Button("Calcular", type="submit", cls="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"),
