@@ -588,7 +588,6 @@ video {
   }
 }
 
-<<<<<<< HEAD
 .visible {
   visibility: visible;
 }
@@ -645,13 +644,10 @@ video {
   order: 2;
 }
 
-=======
->>>>>>> c181424ef3a4025c222c91f08e3fba97d9f4e0a4
 .m-0 {
   margin: 0px;
 }
 
-<<<<<<< HEAD
 .m-1 {
   margin: 0.25rem;
 }
@@ -660,8 +656,6 @@ video {
   margin: 0.5rem;
 }
 
-=======
->>>>>>> c181424ef3a4025c222c91f08e3fba97d9f4e0a4
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -703,7 +697,6 @@ video {
   display: grid;
 }
 
-<<<<<<< HEAD
 .contents {
   display: contents;
 }
@@ -740,8 +733,6 @@ video {
   height: 0.25rem;
 }
 
-=======
->>>>>>> c181424ef3a4025c222c91f08e3fba97d9f4e0a4
 .min-h-screen {
   min-height: 100vh;
 }
@@ -812,28 +803,16 @@ video {
   margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
-.space-y-4 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
-}
-
-.space-y-6 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
-}
-
-.space-y-12 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(3rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(3rem * var(--tw-space-y-reverse));
-}
-
 .space-y-10 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(2.5rem * var(--tw-space-y-reverse));
+}
+
+.space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 
 .overflow-hidden {
@@ -901,31 +880,16 @@ video {
   background-color: rgb(234 179 8 / var(--tw-bg-opacity));
 }
 
-<<<<<<< HEAD
 .p-1 {
   padding: 0.25rem;
 }
 
-=======
->>>>>>> c181424ef3a4025c222c91f08e3fba97d9f4e0a4
 .p-4 {
   padding: 1rem;
 }
 
 .p-6 {
   padding: 1.5rem;
-}
-
-.p-8 {
-  padding: 2rem;
-}
-
-.p-2 {
-  padding: 0.5rem;
-}
-
-.p-12 {
-  padding: 3rem;
 }
 
 .px-3 {
