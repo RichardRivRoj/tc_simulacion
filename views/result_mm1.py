@@ -8,7 +8,8 @@ def resultado_mm1(tasa_llegada : float, tasa_servicio : float):
     # Cálculos de teoría de colas
     rho = tasa_llegada / (tasa_servicio)
     vacio = (1 - rho)
-    
+
+    # Deberia crearse una tabla, y ponerse al lado del la parte de la calculadora
     return Div(
         H2(f"Factor de utilización (rho): {rho:.4f}", cls="text-lg text-green-500"), 
         H2(f"Factor que el servidor este vacio P0: {vacio:.4f}", cls="text-lg text-green-500"),
