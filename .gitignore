@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-teoria_colas/
-styles.css/
-=======
 __pycache__
 *.py[cod]
 *$py.class
 node_modules
 .venv
 /.vscode
->>>>>>> 98dbc5503002defbcda4c59e8dca8f9c14210e7b
