@@ -41,7 +41,7 @@ def calcular_cola():
             method="POST",
             cls= "space-y-10"
         ),
-        cls="p-12 bg-white border border-gray-200 rounded-lg shadow"
+        cls="p-6 bg-white border border-gray-200 rounded-lg shadow"
     )
     
     return Html(
