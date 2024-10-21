@@ -17,7 +17,7 @@ def mm1():
     return calcular_cola()
 
 @rt("/result_MM1", methods=["POST"])
-def result_mm1(tasa_llegada : float, tasa_servicio : float):
-    return resultado_mm1(tasa_llegada, tasa_servicio)
+def result_mm1(v_lambda : float, v_mu : float):
+    return resultado_mm1(v_lambda, v_mu)
 
 serve()
