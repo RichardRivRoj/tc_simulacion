@@ -3,14 +3,14 @@ from component.header import header
 from component.footer import footer
 
 
-def resultado_mm1(tasa_llegada, tasa_servicio):
+def resultado_mm1(tasa_llegada : float, tasa_servicio : float):
     
     # Cálculos de teoría de colas
     rho = tasa_llegada / (tasa_servicio)
     vacio = (1 - rho)
     
     resultado = Div(
-        Div(f"Factor de utilización (rho): {rho:.2f}", cls="text-lg text-green-500"), 
+        H2(f"Factor de utilización (rho): {rho:.2f}", cls="text-lg text-green-500"), 
         H2(f"Factor que el servidor este vacio P0: {vacio:.2f}", cls="text-lg text-green-500"),
         Div(
             A('Volver', href='/', cls="text-red-300")
