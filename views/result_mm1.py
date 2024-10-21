@@ -9,14 +9,16 @@ def resultado_mm1(tasa_llegada : float, tasa_servicio : float):
     rho = tasa_llegada / (tasa_servicio)
     vacio = (1 - rho)
     
-    resultado = Div(
-        H2(f"Factor de utilización (rho): {rho:.2f}", cls="text-lg text-green-500"), 
-        H2(f"Factor que el servidor este vacio P0: {vacio:.2f}", cls="text-lg text-green-500"),
+    return Div(
+        H2(f"Factor de utilización (rho): {rho:.4f}", cls="text-lg text-green-500"), 
+        H2(f"Factor que el servidor este vacio P0: {vacio:.4f}", cls="text-lg text-green-500"),
         Div(
             A('Volver', href='/', cls="text-red-300")
-        )
+        ),
+        cls="p-6 bg-white border border-gray-200 rounded-lg shadow space-y-10"
     )
     
+    """
     return Html(
         Head(
             Link(rel="stylesheet", href="/static/output.css"),
@@ -35,3 +37,4 @@ def resultado_mm1(tasa_llegada : float, tasa_servicio : float):
             cls="m-0"
         ),      
     )
+    """
