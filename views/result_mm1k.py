@@ -6,6 +6,7 @@ from component.table import tabla_resultado
 from views.graficas import crear_grafica
 import numpy as np
 import math
+import json
 
 def resultado_mm1k(v_lambda: float, v_mu: float, v_k : int):
     n = 0
@@ -41,8 +42,14 @@ def resultado_mm1k(v_lambda: float, v_mu: float, v_k : int):
         # Incrementamos n para la siguiente iteración
         n += 1
     
-    n_values = [fila['n'] for fila in resultados]
-    pn_values = [fila['Pn'] for fila in resultados]
+    x_data = [fila['n'] for fila in resultados]
+    y_data = [fila['Pn'] for fila in resultados]
+    title = f"Gráfica de M/M/1/K/DG/∞ (λ={v_lambda}, μ={v_mu}, k={v_k})"
+    x_label = "n"
+    x_label = str(x_label)
+    y_label = "Pn"
+    y_label = str(y_label)
+    
     fn_values = [fila['Fn'] for fila in resultados]
     
     # Calculo de Ls
@@ -73,10 +80,6 @@ def resultado_mm1k(v_lambda: float, v_mu: float, v_k : int):
     
 
     # Calcular n y almacenar los resultados
-    
-    
-    grafica_pn = crear_grafica(n_values, pn_values, "n vs Pn", "n", "Pn")
-    grafica_fn = crear_grafica(n_values, fn_values, "n vs Fn", "n", "Fn")
 
     # Generar la tabla con FastHTML
     return Div(
@@ -131,6 +134,27 @@ def resultado_mm1k(v_lambda: float, v_mu: float, v_k : int):
                 cls="mt-4 bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg px-5 py-2.5 text-center"
             ),
             cls="p-12 mb-8 bg-white border border-gray-200 shadow space-y-8"
+        ),
+        Div(
+        Form(
+            H1("Resultados M/M/1/K"),
+            Input(type="hidden", name="x_data", value=json.dumps(x_data)),
+            Input(type="hidden", name="y_data", value=json.dumps(y_data)),
+            Input(type="hidden", name="title", value=title),
+            Input(type="hidden", name="x_label", value=x_label),
+            Input(type="hidden", name="y_label", value=y_label),
+            Button("Cargar Gráfica", type="submit",
+                cls="bg-blue-500 text-white p-2 rounded",
+                hx_post="/grafica",  # Realiza una solicitud POST
+                hx_target="#grafica-container",  # Contenedor donde se cargará el HTML
+                hx_swap="innerHTML",  # Reemplazar el contenido del contenedor
+            ),
+            action='/grafica',
+            method="POST",
+            cls="flex flex-col items-center space-y-10 pb-12"
+        ),
+        Div(id="grafica-container", cls="mt-4"),
+        cls="flex flex-col items-center rounded-bl-lg rounded-br-lg space-y-0 pb-12"
         ),
         cls="flex flex-col items-center rounded-bl-lg rounded-br-lg space-y-0 pb-12"
     )
