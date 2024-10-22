@@ -3,7 +3,7 @@ from fastapi.responses import HTMLResponse
 from component.header import header
 from component.footer import footer
 from component.table import tabla_resultado
-from component.graficas import crear_grafica
+from views.graficas import crear_grafica
 import numpy as np
 import math
 
