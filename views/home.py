@@ -9,6 +9,7 @@ def home():
     return Html(
         Head(
             Link(rel="stylesheet", href="/static/output.css"),
+            Link(rel="icon", type="image/ico", href="static/img/icono_linesim.ico"),
             Title("Inicio")
         ),
         Body(

@@ -4,17 +4,20 @@ from fasthtml.common import *
 def header():
     return Div(
         Header(
-            Div("LOGO", cls="bg-blue-600 text-white px-4 py-2 rounded-full font-bold"),
+            Div(
+                Img(src="static/img/logo_white.svg", alt="logo", cls="w-[178px] h-[70px] mx-4 my-2"),
+                cls="w-[200px] h-[100px] flex items-center"
+            ),
             Nav(
                 Ul(
                     Li(A("Inicio", href="/", cls="text-lg hover:text-blue-600 font-semibold")),
                     Li(A("Calculadora", href="#", cls="text-lg hover:text-blue-600 font-semibold")),
                     Li(A("Ayuda", href="#", cls="text-lg hover:text-blue-600 font-semibold")),
-                    cls="flex space-x-16"
+                    cls="flex space-x-16 mx-8"
                 ),
-                cls="flex items-center space-x-8 pr-8"
+                cls="flex items-center space-x-8 pr-6"
             ),
-            cls="flex justify-between items-center p-6 shadow"
+            cls="flex justify-between items-center p-2 shadow"
         ),
         cls="w-full"
     )
