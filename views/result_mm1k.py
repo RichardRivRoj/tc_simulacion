@@ -45,12 +45,11 @@ def resultado_mm1k(v_lambda: float, v_mu: float, v_k : int):
     x_data = [fila['n'] for fila in resultados]
     y_data = [fila['Pn'] for fila in resultados]
     title = f"Gráfica de M/M/1/K/DG/∞ (λ={v_lambda}, μ={v_mu}, k={v_k})"
-    x_label = "n"
-    x_label = str(x_label)
-    y_label = "Pn"
-    y_label = str(y_label)
+    x_label = str("n")
+    y_label = str("Pn")
+    y_label2 = str("Fn")
     
-    fn_values = [fila['Fn'] for fila in resultados]
+    y_data2 = [fila['Fn'] for fila in resultados]
     
     # Calculo de Ls
     v_ls = 0
@@ -136,25 +135,46 @@ def resultado_mm1k(v_lambda: float, v_mu: float, v_k : int):
             cls="p-12 mb-8 bg-white border border-gray-200 shadow space-y-8"
         ),
         Div(
-        Form(
-            H1("Resultados M/M/1/K"),
-            Input(type="hidden", name="x_data", value=json.dumps(x_data)),
-            Input(type="hidden", name="y_data", value=json.dumps(y_data)),
-            Input(type="hidden", name="title", value=title),
-            Input(type="hidden", name="x_label", value=x_label),
-            Input(type="hidden", name="y_label", value=y_label),
-            Button("Cargar Gráfica", type="submit",
-                cls="bg-blue-500 text-white p-2 rounded",
-                hx_post="/grafica",  # Realiza una solicitud POST
-                hx_target="#grafica-container",  # Contenedor donde se cargará el HTML
-                hx_swap="innerHTML",  # Reemplazar el contenido del contenedor
+            Div(
+                Form(
+                    H2("Resultados M/M/1 n x Pn"),
+                    Input(type="hidden", name="x_data", value=json.dumps(x_data)),
+                    Input(type="hidden", name="y_data", value=json.dumps(y_data)),
+                    Input(type="hidden", name="title", value=title),
+                    Input(type="hidden", name="x_label", value=x_label),
+                    Input(type="hidden", name="y_label", value=y_label),
+                    Button("Cargar Gráfica", type="submit",
+                        cls="bg-blue-500 text-white p-2 rounded",
+                        hx_post="/grafica",  # Realiza una solicitud POST
+                        hx_target="#grafica-container",  # Contenedor donde se cargará el HTML
+                        hx_swap="innerHTML",  # Reemplazar el contenido del contenedor
+                    ),
+                    action='/grafica',
+                    method="POST",
+                    cls="flex flex-col items-center space-y-4 pb-12"
+                ),
+                Div(id="grafica-container", cls="mx-auto"),
             ),
-            action='/grafica',
-            method="POST",
-            cls="flex flex-col items-center space-y-10 pb-12"
-        ),
-        Div(id="grafica-container", cls="mt-4"),
-        cls="flex flex-col items-center rounded-bl-lg rounded-br-lg space-y-0 pb-12"
-        ),
-        cls="flex flex-col items-center rounded-bl-lg rounded-br-lg space-y-0 pb-12"
+            Div(
+                Form(
+                    H2("Resultados M/M/1 n x Fn"),
+                    Input(type="hidden", name="x_data", value=json.dumps(x_data)),
+                    Input(type="hidden", name="y_data", value=json.dumps(y_data2)),
+                    Input(type="hidden", name="title", value=title),
+                    Input(type="hidden", name="x_label", value=x_label),
+                    Input(type="hidden", name="y_label", value=y_label2),
+                    Button("Cargar Gráfica", type="submit",
+                        cls="bg-blue-500 text-white p-2 rounded",
+                        hx_post="/grafica",  # Realiza una solicitud POST
+                        hx_target="#grafica-container2",  # Contenedor donde se cargará el HTML
+                        hx_swap="innerHTML",  # Reemplazar el contenido del contenedor
+                    ),
+                    action='/grafica',
+                    method="POST",
+                    cls="flex flex-col items-center space-y-4 pb-12"
+                ),
+                Div(id="grafica-container2", cls="mx-auto"),
+            ), 
+            cls="flex flex-col justify-between space-x-4 items-center rounded-bl-lg rounded-br-lg pb-12 w-full" 
+        ), 
     )

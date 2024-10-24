@@ -17,11 +17,21 @@ def crear_grafica(x_data: list, y_data: list, title: str, x_label: str, y_label:
     
     fig_2 = go.Figure()
     fig_2.add_trace(
-    go.Bar(
-        x=x_data,
-        y=y_data,
-        name='M/M/1',
-        marker_color='#98fe89'
+        go.Bar(
+            x=x_data,
+            y=y_data,
+            name='M/M/1',
+            marker_color='#2563EB'
+        )
+    )
+    
+    fig_2.add_trace(
+        go.Scatter(
+            x=x_data,
+            y=y_data,
+            mode='lines+markers',
+            name='Linea',
+            marker_color='#B91C1C'
         )
     )
 
@@ -29,6 +39,10 @@ def crear_grafica(x_data: list, y_data: list, title: str, x_label: str, y_label:
         title=title,
         xaxis_title=x_label,
         yaxis_title=y_label,
+        autosize=False,
+        width=500,  
+        height=300,
+        barmode='group',
         template='plotly_white',
         xaxis=dict(
             tickmode='array',
