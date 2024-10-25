@@ -1,11 +1,5 @@
 from fasthtml.common import *
-from fastapi.responses import HTMLResponse
-from component.header import header
-from component.footer import footer
 from component.table import tabla_resultado
-from views.graficas import crear_grafica
-import numpy as np
-import math
 import json
 
 def resultado_mm1k(v_lambda: float, v_mu: float, v_k : int):

@@ -125,37 +125,3 @@ def resultado_mm1(v_lambda: float, v_mu: float):
             cls="flex flex-col justify-between space-x-4 items-center rounded-bl-lg rounded-br-lg pb-12 w-full" 
         ),   
     )
-    
-    """
-    return Html(
-        Head(
-            Link(rel="stylesheet", href="/static/output.css"),
-            Title("Calculadora de Teoria de Colas")
-        ),
-        Body(
-            Div(
-                header(),
-                    Div(
-                        resultado,
-                        cls="container mx-auto p-6 flex-grow"
-                    ), 
-            footer(),
-            cls="flex flex-col min-h-screen"  
-            ),
-            cls="m-0"
-        ),      
-    )
-    
-
-        Para implementar despues
-        Div(
-            Div(
-                cls="graph", _inner_html=grafica_fn # Ancho al 50% y espaciado
-            ),
-            Div(
-                cls="graph", _inner_html=grafica_pn # Ancho al 50% y espaciado
-            ),
-            cls="flex justify-between items-center"  # Organiza las gráficas de manera horizontal
-        ),
-        cls="p-6 bg-white border border-gray-200 rounded-lg shadow space-y-10"
-    """
