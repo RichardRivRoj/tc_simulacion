@@ -1,19 +1,16 @@
-from fasthtml import FastHTML
 from fasthtml.common import *
-import json
 from views.home import home
 from views.calc_mm1 import calc_mm1
 from views.result_mm1 import result_mm1
 from views.calc_mmk import calc_mmk
 from views.result_mmk import result_mmk
-from views.graficas import crear_grafica
+from views.graph import create_graph
 
 import plotly.graph_objects as go
 
 app, rt = fast_app()
 
 # Rutas 
-
 @rt("/")
 def index():
     return home()
@@ -98,8 +95,8 @@ def r_mm1(v_lambda : float, v_mu : float, v_k: int):
         
     return result_mmk(v_lambda, v_mu, v_k)
 
-@rt("/grafica", methods=['GET', "POST"])
-def vista_grafica(x_data: str, y_data: str, title: str, x_label: str, y_label: str):
-    return crear_grafica(x_data, y_data, title, x_label, y_label)
+@rt("/graph", methods=['GET', "POST"])
+def graph(x_data: str, y_data: str, title: str, x_label: str, y_label: str):
+    return create_graph(x_data, y_data, title, x_label, y_label)
 
 serve()

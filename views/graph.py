@@ -1,20 +1,19 @@
 import plotly.graph_objects as go
 import json
 
-def crear_grafica(x_data: list, y_data: list, title: str, x_label: str, y_label: str):
+def create_graph(x_data: list, y_data: list, title: str, x_label: str, y_label: str):
     # Crear la gráfica
     x_data = list(json.loads(x_data))
     y_data = list(json.loads(y_data))
-    
+
     if isinstance(x_data, str):
         x_data = x_data.strip('[]').split(',')
         x_data = [float(x.strip()) for x in x_data if x.strip()]
-    
+
     if isinstance(y_data, str):
         y_data = y_data.strip('[]').split(',')  # Elimina los corchetes y divide por comas
         y_data = [float(y.strip()) for y in y_data if y.strip()]  # Convierte a float cada elemento y elimina espacios
-    
-    
+
     fig_2 = go.Figure()
     fig_2.add_trace(
         go.Bar(
@@ -24,7 +23,7 @@ def crear_grafica(x_data: list, y_data: list, title: str, x_label: str, y_label:
             marker_color='#2563EB'
         )
     )
-    
+
     fig_2.add_trace(
         go.Scatter(
             x=x_data,

@@ -48,11 +48,11 @@ def result_mm1(v_lambda: float, v_mu: float):
         Input(type="hidden", name="y_label", value=y_label),
         Button("Gráfica M/M/1 n x Pn", type="submit",
             cls="text-center focus:outline-none text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5",
-            hx_post="/grafica",  # Realiza una solicitud POST
+            hx_post="/graph",  # Realiza una solicitud POST
             hx_target="#graph_pn",  # Contenedor donde se cargará el HTML
             hx_swap="innerHTML",  # Reemplazar el contenido del contenedor
         ),
-        action='/grafica',
+        action='/graph',
         method="POST",
     )
 
@@ -64,11 +64,11 @@ def result_mm1(v_lambda: float, v_mu: float):
         Input(type="hidden", name="y_label", value=y_label2),
         Button("Gráfica M/M/1 n x Fn", type="submit",
             cls="text-center focus:outline-none text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5",
-            hx_post="/grafica",  # Realiza una solicitud POST
+            hx_post="/graph",  # Realiza una solicitud POST
             hx_target="#graph_fn",  # Contenedor donde se cargará el HTML
             hx_swap="innerHTML",  # Reemplazar el contenido del contenedor
         ),
-        action='/grafica',
+        action='/graph',
         method="POST",
     ),
 
@@ -105,7 +105,7 @@ def result_mm1(v_lambda: float, v_mu: float):
                 cls="flex flex-row space-x-4"
             ),
             Div(
-                A('Volver', href='/', cls="text-white"),
+                A('Volver', href='/calc_mm1', cls="text-white"),
                 cls="w-1/2 text-center focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5"
             ),
             cls="flex flex-col items-center gap-4 p-4"
