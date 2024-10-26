@@ -1,8 +1,14 @@
 from fasthtml.common import *
-from component.table import tabla_resultado
+from fastapi.responses import HTMLResponse
+from components.header import header
+from components.footer import footer
+from components.table import tabla_resultado
+from views.graficas import crear_grafica
+import numpy as np
+import math
 import json
 
-def resultado_mm1k(v_lambda: float, v_mu: float, v_k : int):
+def result_mmk(v_lambda: float, v_mu: float, v_k: int):
     n = 0
     v_pn_temp = 1
     fn_acumulado = 0

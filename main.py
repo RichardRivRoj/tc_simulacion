@@ -2,10 +2,10 @@ from fasthtml import FastHTML
 from fasthtml.common import *
 import json
 from views.home import home
-from views.calcular_cola import calcular_cola
-from views.result_mm1 import resultado_mm1
-from views.calcular_colak import calcular_colak
-from views.result_mm1k import resultado_mm1k
+from views.calc_mm1 import calc_mm1
+from views.result_mm1 import result_mm1
+from views.calc_mmk import calc_mmk
+from views.result_mmk import result_mmk
 from views.graficas import crear_grafica
 
 import plotly.graph_objects as go
@@ -18,12 +18,12 @@ app, rt = fast_app()
 def index():
     return home()
 
-@rt("/calcularmm1", methods=["GET"])
+@rt("/calc_mm1", methods=["GET"])
 def mm1():
-    return calcular_cola()
+    return calc_mm1()
 
-@rt("/result_MM1", methods=["POST", "GET"])
-def result_mm1(v_lambda : float, v_mu : float):
+@rt("/result_mm1", methods=["POST", "GET"])
+def r_mm1(v_lambda : float, v_mu : float):
     try:
         v_lambda 
         v_mu 
@@ -54,15 +54,14 @@ def result_mm1(v_lambda : float, v_mu : float):
             cls="overflow-hidden mb-auto bg-white border border-gray-200 rounded-lg shadow"
         )
     
-    return resultado_mm1(v_lambda, v_mu)
+    return result_mm1(v_lambda, v_mu)
 
-@rt("/calcularmm1k", methods=["GET"])
-def mm1k():
-    return calcular_colak()
+@rt("/calc_mmk", methods=["GET"])
+def mmk():
+    return calc_mmk()
 
-@rt("/result_MM1K", methods=["POST", "GET"])
-def result_mm1(v_lambda : float, v_mu : float, v_k : int):
-    
+@rt("/result_mmk", methods=["POST", "GET"])
+def r_mm1(v_lambda : float, v_mu : float, v_k: int):
     try:
         v_lambda 
         v_mu 
@@ -97,7 +96,7 @@ def result_mm1(v_lambda : float, v_mu : float, v_k : int):
             cls="overflow-hidden mb-auto bg-white border border-gray-200 rounded-lg shadow"
         )
         
-    return resultado_mm1k(v_lambda, v_mu, v_k)
+    return result_mmk(v_lambda, v_mu, v_k)
 
 @rt("/grafica", methods=['GET', "POST"])
 def vista_grafica(x_data: str, y_data: str, title: str, x_label: str, y_label: str):

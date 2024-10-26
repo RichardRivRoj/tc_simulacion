@@ -1,8 +1,10 @@
 from fasthtml.common import *
-from component.table import tabla_resultado
+from components.card import card
+from components.result_box import result_box
+from components.table import tabla_resultado
 import json
 
-def resultado_mm1(v_lambda: float, v_mu: float):
+def result_mm1(v_lambda: float, v_mu: float):
     v_rho = v_lambda / v_mu
     v_po = (1 - v_rho)
     v_ls = v_rho /(1 - v_rho)
@@ -37,91 +39,79 @@ def resultado_mm1(v_lambda: float, v_mu: float):
     y_label = str(y_label)
     y_label2 = str("Fn")
     y_data2 = [fila['Fn'] for fila in resultados]
-        
 
-    # Generar la tabla con FastHTML
-    return Div(
-        Div(
-            H2("Resultados M/M/1", cls="text-xl font-bold text-lg"),
-            cls="bg-blue-600 text-white text-center py-4 rounded-t-md min-w-full",
+    graph_pn = Form(
+        Input(type="hidden", name="x_data", value=json.dumps(x_data)),
+        Input(type="hidden", name="y_data", value=json.dumps(y_data)),
+        Input(type="hidden", name="title", value=title),
+        Input(type="hidden", name="x_label", value=x_label),
+        Input(type="hidden", name="y_label", value=y_label),
+        Button("Gráfica M/M/1 n x Pn", type="submit",
+            cls="text-center focus:outline-none text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5",
+            hx_post="/grafica",  # Realiza una solicitud POST
+            hx_target="#graph_pn",  # Contenedor donde se cargará el HTML
+            hx_swap="innerHTML",  # Reemplazar el contenido del contenedor
         ),
+        action='/grafica',
+        method="POST",
+    )
+
+    graph_fn = Form(
+        Input(type="hidden", name="x_data", value=json.dumps(x_data)),
+        Input(type="hidden", name="y_data", value=json.dumps(y_data2)),
+        Input(type="hidden", name="title", value=title),
+        Input(type="hidden", name="x_label", value=x_label),
+        Input(type="hidden", name="y_label", value=y_label2),
+        Button("Gráfica M/M/1 n x Fn", type="submit",
+            cls="text-center focus:outline-none text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5",
+            hx_post="/grafica",  # Realiza una solicitud POST
+            hx_target="#graph_fn",  # Contenedor donde se cargará el HTML
+            hx_swap="innerHTML",  # Reemplazar el contenido del contenedor
+        ),
+        action='/grafica',
+        method="POST",
+    ),
+
+    result = card(
         Div(
             Div(
-                P(f"Factor de Utilización (ρ): {v_rho:.4f}", cls="text-[16px] font-semibold text-black"),
-                cls="bg-white p-4 rounded-lg shadow-md border max-w-md mx-auto mt-4"
+                Div(
+                    result_box("Factor de Utilización (ρ)", f"{v_rho:.4}"),
+                    result_box("Probabilidad de que el servidor esté ocupado (Po)", f"{v_po:.4}"),
+                    cls="grid grid-rows-subgrid gap-4 row-span-2"
+                ),
+                Div(
+                    result_box("Número esperado de clientes en el sistema (Ls)", f"{v_ls:.4}"),
+                    result_box("Número esperado de clientes en la cola (Lq)", f"{v_lq:.4}"),
+                    cls="grid grid-rows-subgrid gap-4 row-span-2"
+                ),
+                Div(
+                    result_box("Tiempo esperado en el sistema por cliente (Ws)", f"{v_ws:.4}"),
+                    result_box("Tiempo esperado en la cola (Wq)", f"{v_wq:.4}"),
+                    cls="grid grid-rows-subgrid gap-4 row-span-2"
+                ),
+                cls="flex flex-row items-center gap-4"
             ),
             Div(
-                P(f"Probabilidad de que el servidor esté ocupado (Po): {v_po:.4f}", cls="text-[16px] font-semibold text-black"),
-                cls="bg-white p-4 rounded-lg shadow-md max-w-md mx-auto mt-4"
+                tabla_resultado(
+                    headers=['n', 'Pn', 'Fn'],
+                    data=resultados
+                ),
+                cls="w-1/2"
             ),
             Div(
-                P(f"Número esperado de clientes en el sistema (Ls): {v_ls:.2f}", cls="text-[16px] font-semibold text-black"),
-                cls="bg-white p-4 rounded-lg shadow-md border max-w-md mx-auto mt-4"
-            ),
-            Div(
-                P(f"Número esperado de clientes en la cola (Lq): {v_lq:.2f}", cls="text-[16px] font-semibold text-black"),
-                cls="bg-white p-4 rounded-lg shadow-md max-w-md mx-auto mt-4"
-            ),
-            Div(
-                P(f"Tiempo esperado en el sistema por cliente (Ws): {v_ws:.2f}", cls="text-[16px] font-semibold text-black"),
-                cls="bg-white p-4 rounded-lg shadow-md max-w-md mx-auto mt-4"
-            ),
-            Div(
-                P(f"Tiempo esperado en la cola (Wq): {v_wq:.2f}", cls="text-[16px] font-semibold text-black"),
-                cls="bg-white p-4 rounded-lg shadow-md max-w-md mx-auto mt-4"
-            ),
-            Div(cls="mt-6"),
-            tabla_resultado(
-                headers=['n', 'Pn', 'Fn'],
-                data=resultados
+                graph_pn,
+                graph_fn,
+                cls="flex flex-row space-x-4"
             ),
             Div(
                 A('Volver', href='/', cls="text-white"),
-                cls="mt-4 bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg px-5 py-2.5 text-center"
+                cls="w-1/2 text-center focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5"
             ),
-            cls="p-12 mb-8 bg-white border border-gray-200 shadow space-y-8"
+            cls="flex flex-col items-center gap-4 p-4"
         ),
-        Div(
-            Div(
-                Form(
-                    H2("Resultados M/M/1 n x Pn"),
-                    Input(type="hidden", name="x_data", value=json.dumps(x_data)),
-                    Input(type="hidden", name="y_data", value=json.dumps(y_data)),
-                    Input(type="hidden", name="title", value=title),
-                    Input(type="hidden", name="x_label", value=x_label),
-                    Input(type="hidden", name="y_label", value=y_label),
-                    Button("Cargar Gráfica", type="submit",
-                        cls="bg-blue-500 text-white p-2 rounded",
-                        hx_post="/grafica",  # Realiza una solicitud POST
-                        hx_target="#grafica-container",  # Contenedor donde se cargará el HTML
-                        hx_swap="innerHTML",  # Reemplazar el contenido del contenedor
-                    ),
-                    action='/grafica',
-                    method="POST",
-                    cls="flex flex-col items-center space-y-4 pb-12"
-                ),
-                Div(id="grafica-container", cls="mx-auto"),
-            ),
-            Div(
-                Form(
-                    H2("Resultados M/M/1 n x Fn"),
-                    Input(type="hidden", name="x_data", value=json.dumps(x_data)),
-                    Input(type="hidden", name="y_data", value=json.dumps(y_data2)),
-                    Input(type="hidden", name="title", value=title),
-                    Input(type="hidden", name="x_label", value=x_label),
-                    Input(type="hidden", name="y_label", value=y_label2),
-                    Button("Cargar Gráfica", type="submit",
-                        cls="bg-blue-500 text-white p-2 rounded",
-                        hx_post="/grafica",  # Realiza una solicitud POST
-                        hx_target="#grafica-container2",  # Contenedor donde se cargará el HTML
-                        hx_swap="innerHTML",  # Reemplazar el contenido del contenedor
-                    ),
-                    action='/grafica',
-                    method="POST",
-                    cls="flex flex-col items-center space-y-4 pb-12"
-                ),
-                Div(id="grafica-container2", cls="mx-auto"),
-            ), 
-            cls="flex flex-col justify-between space-x-4 items-center rounded-bl-lg rounded-br-lg pb-12 w-full" 
-        ),   
+        title="Resultado M/M/1",
     )
+
+    # Generar la tabla con FastHTML
+    return result

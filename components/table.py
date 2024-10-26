@@ -27,7 +27,7 @@ def tabla_resultado(headers: list, data: list):
                 ),
                 cls="min-w-full border-collapse bg-white border border-gray-300 shadow-md rounded-lg overflow-hidden",
             ),
-            cls="overflow-auto max-h-96"  # Permitir scroll y limitar la altura máxima
+            cls="overflow-auto max-h-64"  # Permitir scroll y limitar la altura máxima
         ),
         cls="rounded-lg border border-gray-300 shadow-md"  # Estilo del contenedor principal
     )
