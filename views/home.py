@@ -25,15 +25,15 @@ def home():
                 Div(
                     H3("MULTIPLE", cls="bg-blue-600 text-white text-center py-4 rounded-t-md font-bold"),
                     Div(
-                        calculation_button("⚠️", "EN DESAROLLO", "Próximamente", "bg-white", "text-black", "bl", "#"),
-                        calculation_button("⚠️", "EN DESAROLLO", "Próximamente", "bg-white", "text-black", "br", "#"),
+                        calculation_button("⚠️", "M/M/c", "Población infinita canal múltiple", "bg-white", "text-black", "bl", "/calc_mms"),
+                        calculation_button("⚠️", "M/M/c/DG/K/∞", "Población inita canal múltiple", "bg-white", "text-black", "br", "/calc_mmsk"),
                         cls="grid grid-cols-2 rounded-md shadow-sm"
                     ),
                     cls="rounded-md overflow-hidden"
                 ),
                 cls="space-y-8 mt-8"
             ),
-            cls="container mx-auto py-6 px-16"
+            cls="container mx-auto py-6 px-16 min-h-screen flex flex-col"
         ),
         title="Inicio"
     )

@@ -5,6 +5,10 @@ from views.result_mm1 import result_mm1
 from views.calc_mmk import calc_mmk
 from views.result_mmk import result_mmk
 from views.graph import create_graph
+from views.calc_mms import calc_mms
+from views.result_mms import result_mms
+from views.calc_mmsk import calc_mmsk
+from views.result_mmsk import result_mmsk
 
 import plotly.graph_objects as go
 
@@ -94,6 +98,23 @@ def r_mm1(v_lambda : float, v_mu : float, v_k: int):
         )
         
     return result_mmk(v_lambda, v_mu, v_k)
+
+@rt("/calc_mms", methods=["GET"])
+def mms():
+    return calc_mms()
+
+@rt("/result_mms", methods=["POST", "GET"])
+def r_mms(v_lambda : float, v_mu : float, v_c : int):
+    return result_mms(v_lambda, v_mu, v_c)
+
+
+@rt("/calc_mmsk", methods=["GET"])
+def mmsk():
+    return calc_mmsk()
+
+@rt("/result_mmsk", methods=["POST", "GET"])
+def r_mmsk(v_lambda : float, v_mu : float, v_c : int, v_k : int):
+    return result_mmsk(v_lambda, v_mu, v_c, v_k)
 
 @rt("/graph", methods=['GET', "POST"])
 def graph(x_data: str, y_data: str, title: str, x_label: str, y_label: str):

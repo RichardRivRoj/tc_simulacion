@@ -32,7 +32,7 @@ def result_mm1(v_lambda: float, v_mu: float):
             
     x_data = [fila['n'] for fila in resultados]
     y_data = [fila['Pn'] for fila in resultados]
-    title = f"Gráfica de M/M/1/ (λ={v_lambda}, μ={v_mu})"
+    title = f"Gráfica de M/M/1 (λ={v_lambda}, μ={v_mu})"
     x_label = "n"
     x_label = str(x_label)
     y_label = "Pn"
