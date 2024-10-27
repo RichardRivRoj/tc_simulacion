@@ -41,7 +41,7 @@ def result_mms(v_lambda: float, v_mu: float, v_c : int):
     v_ls = v_lq + (v_lambda / v_mu)
     v_wq = v_lq / v_lambda
     v_ws = v_wq + (1 / v_mu)
-    v_pw = ((v_lambda / v_mu) ** v_c / (factorial(v_c) * (1 - v_rho))) * v_po
+    #v_pw = ((v_lambda / v_mu) ** v_c / (factorial(v_c) * (1 - v_rho))) * v_po
             
     x_data = [fila['n'] for fila in resultados]
     y_data = [fila['Pn'] for fila in resultados]
@@ -103,10 +103,6 @@ def result_mms(v_lambda: float, v_mu: float, v_c : int):
                     result_box("Tiempo esperado en la cola (Wq)", f"{v_wq:.4}"),
                     cls="grid grid-rows-subgrid gap-4 row-span-2"
                 ),
-                Div(
-                    result_box("Probabilidad de que un cliente deba esperar en la cola (Pw)", f"{v_pw:.4}"),
-                    cls="grid grid-rows-subgrid gap-4 row-span-2"
-                ),
                 cls="flex flex-row items-center gap-4"
             ),
             Div(
@@ -122,7 +118,7 @@ def result_mms(v_lambda: float, v_mu: float, v_c : int):
                 cls="flex flex-row space-x-4"
             ),
             Div(
-                A('Volver', href='/calc_mm1', cls="text-white"),
+                A('Volver', href='/calc_mms', cls="text-white"),
                 cls="w-1/2 text-center focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5"
             ),
             cls="flex flex-col items-center gap-4 p-4"

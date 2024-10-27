@@ -10,8 +10,6 @@ from views.result_mms import result_mms
 from views.calc_mmsk import calc_mmsk
 from views.result_mmsk import result_mmsk
 
-import plotly.graph_objects as go
-
 app, rt = fast_app()
 
 # Rutas 
@@ -105,6 +103,40 @@ def mms():
 
 @rt("/result_mms", methods=["POST", "GET"])
 def r_mms(v_lambda : float, v_mu : float, v_c : int):
+    
+    try:
+        v_lambda 
+        v_mu
+        v_c 
+    except ValueError:
+        return Div(
+            Div(
+                P("Error: Los valores ingresados deben ser numéricos.", cls="text-red-500 text-center"),
+                cls="bg-white p-4 rounded-lg shadow-md border max-w-md mx-auto mt-4"
+            )
+        )
+
+    # Validar los valores
+    errores = []
+    if v_lambda <= 0:
+        errores.append("λ debe ser mayor a 0.")
+    if v_mu <= 0:
+        errores.append("μ debe ser mayor a 0.")
+    if v_lambda >= v_c * v_mu:
+        errores.append("λ debe ser menor que c * μ.")
+    if v_c <= 0:
+        errores.append("c debe ser mayor a 0")
+    if v_c == type(float(v_c)):
+        errores.append("c tiene que ser un número entero")
+
+    if errores:
+        # Si hay errores, los mostramos en el div de respuesta
+        return Div(
+            Div(
+                *[Div(error, cls="text-red-500") for error in errores], 
+                cls="flex flex-col items-center"
+            ),
+        )   
     return result_mms(v_lambda, v_mu, v_c)
 
 
@@ -114,6 +146,45 @@ def mmsk():
 
 @rt("/result_mmsk", methods=["POST", "GET"])
 def r_mmsk(v_lambda : float, v_mu : float, v_c : int, v_k : int):
+    
+    try:
+        v_lambda 
+        v_mu
+        v_c 
+    except ValueError:
+        return Div(
+            Div(
+                P("Error: Los valores ingresados deben ser numéricos.", cls="text-red-500 text-center"),
+                cls="bg-white p-4 rounded-lg shadow-md border max-w-md mx-auto mt-4"
+            )
+        )
+
+    # Validar los valores
+    errores = []
+    if v_lambda <= 0:
+        errores.append("λ debe ser mayor a 0.")
+    if v_mu <= 0:
+        errores.append("μ debe ser mayor a 0.")
+    if v_lambda >= v_c * v_mu:
+        errores.append("λ debe ser menor que c * μ.")
+    if v_c <= 0:
+        errores.append("c debe ser mayor a 0")
+    if v_c == type(float(v_c)):
+        errores.append("c tiene que ser un número entero")
+    if v_k <= v_c:
+        errores.append("K debe ser mayor que c")
+    if v_k == type(float(v_k)) or v_k <= 0:
+        errores.append("K tiene que ser un número entero mayor a 0")
+
+    if errores:
+        # Si hay errores, los mostramos en el div de respuesta
+        return Div(
+            Div(
+                *[Div(error, cls="text-red-500") for error in errores], 
+                cls="flex flex-col items-center"
+            ),
+        ) 
+        
     return result_mmsk(v_lambda, v_mu, v_c, v_k)
 
 @rt("/graph", methods=['GET', "POST"])

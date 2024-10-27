@@ -159,7 +159,7 @@ def result_mmsk(v_lambda: float, v_mu: float, v_c : int, v_k: int):
                 cls="flex flex-row space-x-4"
             ),
             Div(
-                A('Volver', href='/calc_mmk', cls="text-white"),
+                A('Volver', href='/calc_mmsk', cls="text-white"),
                 cls="w-1/2 text-center focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5"
             ),
             cls="flex flex-col items-center gap-4 p-4"

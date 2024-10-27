@@ -8,7 +8,7 @@ def home():
         Div(
             H2(
                 "CALCULADORA DE TEORÍA DE COLAS", 
-                cls="bg-blue-800 text-white font-bold p-4 rounded text-center text-base"
+                cls="bg-primary-variant text-white font-bold p-4 rounded text-center text-base"
             ),
             Div(
                 # Fila de cálculos simples
