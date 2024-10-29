@@ -15,8 +15,8 @@ def home():
                 Div(
                     H3("SIMPLE", cls="bg-blue-600 text-white text-center py-4 rounded-t-md font-bold"),
                     Div(
-                        calculation_button("ℹ️", "M/M/1", "Población infinita canal simple", "bg-white", "text-black", "bl", "/calc_mm1"),
-                        calculation_button("ℹ️", "M/M/1/DG/K/∞", "Población finita canal simple", "bg-white", "text-black", "br", "/calc_mmk"),
+                        calculation_button("infinito", "M/M/1", "Población infinita canal simple", "bg-white", "text-black", "bl", "/calc_mm1"),
+                        calculation_button("prohibido", "M/M/1/DG/K/∞", "Población finita canal simple", "bg-white", "text-black", "br", "/calc_mmk"),
                         cls="grid grid-cols-2 rounded-md shadow-sm"
                     ),
                     cls="rounded-md overflow-hidden"
@@ -25,8 +25,8 @@ def home():
                 Div(
                     H3("MULTIPLE", cls="bg-blue-600 text-white text-center py-4 rounded-t-md font-bold"),
                     Div(
-                        calculation_button("⚠️", "M/M/c", "Población infinita canal múltiple", "bg-white", "text-black", "bl", "/calc_mms"),
-                        calculation_button("⚠️", "M/M/c/DG/K/∞", "Población inita canal múltiple", "bg-white", "text-black", "br", "/calc_mmsk"),
+                        calculation_button("infinito", "M/M/c", "Población infinita canal múltiple", "bg-white", "text-black", "bl", "/calc_mms"),
+                        calculation_button("prohibido", "M/M/c/DG/K/∞", "Población finita canal múltiple", "bg-white", "text-black", "br", "/calc_mmsk"),
                         cls="grid grid-cols-2 rounded-md shadow-sm"
                     ),
                     cls="rounded-md overflow-hidden"

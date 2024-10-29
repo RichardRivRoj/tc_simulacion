@@ -78,8 +78,6 @@ def r_mm1(v_lambda : float, v_mu : float, v_k: int):
         errores.append("λ debe ser mayor a 0.")
     if v_mu <= 0:
         errores.append("μ debe ser mayor a 0.")
-    if v_lambda >= v_mu:
-        errores.append("λ debe ser menor que μ.")
     if v_k <= 0:
         errores.append("K debe ser mayor a 0")
     if v_k == type(float(v_k)):
