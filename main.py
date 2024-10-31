@@ -9,6 +9,7 @@ from views.calc_mms import calc_mms
 from views.result_mms import result_mms
 from views.calc_mmsk import calc_mmsk
 from views.result_mmsk import result_mmsk
+from views.help import help
 
 app, rt = fast_app()
 
@@ -188,5 +189,9 @@ def r_mmsk(v_lambda : float, v_mu : float, v_c : int, v_k : int):
 @rt("/graph", methods=['GET', "POST"])
 def graph(x_data: str, y_data: str, title: str, x_label: str, y_label: str):
     return create_graph(x_data, y_data, title, x_label, y_label)
+
+@rt("/help", methods=['GET', "POST"])
+def v_help():
+    return help()
 
 serve()
