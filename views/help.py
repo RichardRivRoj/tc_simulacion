@@ -11,15 +11,8 @@ def help():
             ),
             Div(
                 Div(
-                    A("TEMA 3", href="/static/pdf/TEMA3.pdf" ,cls="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2"),
-                    Embed(dir="/static/pdf/TEMA3.pdf", type="application/pdf", width="100%", height="600px"),
-                    A("TEMA 3 - EJERCICO", href="/static/pdf/TEMA 3 - EJERCICIO.pdf" ,cls="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2"),
-                    Embed(dir="/static/pdf/TEMA3-EJERCICIO.pdf", type="application/pdf", width="100%", height="600px"),
-                    A("TEMA 4", href="/static/pdf/TEMA4.pdf" ,cls="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2"),
-                    Embed(dir="/static/pdf/TEMA4.pdf", type="application/pdf", width="100%", height="600px"),
-                    A("TEMA 4 - EJERCICIO", href="/static/pdf/TEMA4-EJERCICIO.pdf" ,cls="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2"),
-                    Embed(dir="/static/pdf/TEMA4-EJERCICIO.pdf", type="application/pdf", width="100%", height="600px"),
-                    cls="flex flex-col space-y-4"
+                    "⚠️ En desarrollo",
+                    cls="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2",
                 ),
                 cls="space-y-8 my-8"
             ),

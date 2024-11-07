@@ -1,4 +1,5 @@
 from fasthtml.common import *
+from components.card import card
 from views.home import home
 from views.calc_mm1 import calc_mm1
 from views.result_mm1 import result_mm1
@@ -46,21 +47,17 @@ def r_mm1(v_lambda : float, v_mu : float):
 
     if errores:
         # Si hay errores, los mostramos en una estructura tipo tabla con estilos mejorados
-        return Div(
-            Div(
-                Div("Errores de Validación", cls="bg-primary text-lg font-bold text-white text-center p-3 rounded-t-lg"),
-                Table(
-                    Tr(
-                        Th("Error", cls="bg-red-700 text-center p-3 text-white border-b-2 border-red-300")
-                    ),
-                    *[Tr(Td(error, cls="p-4 border-b border-red-200 text-red-500 hover:bg-gray-50")) for error in errores],
-                    cls="w-full border border-red-700 shadow-md"
+        return card(
+            Table(
+                Tr(
+                    Th()
                 ),
-                cls="max-w-lg mx-auto mt-8 shadow-lg rounded-lg overflow-hidden border border-red-700"
+                *[Tr(Td(error, cls="p-4 border-b border-red-200 text-red-500 hover:bg-gray-50")) for error in errores],
+                cls="w-full border border-red-700 shadow-md"
             ),
-            cls="flex justify-center mt-8 space-x-6"  # Espaciado entre el formulario y la tabla de errores
+            title="Errores de Validación",
         )
-    
+
     return result_mm1(v_lambda, v_mu)
 
 @rt("/calc_mmk", methods=["GET"])
@@ -93,19 +90,15 @@ def r_mm1(v_lambda : float, v_mu : float, v_k: int):
 
     if errores:
         # Si hay errores, los mostramos en una estructura tipo tabla con estilos mejorados
-        return Div(
-            Div(
-                Div("Errores de Validación", cls="bg-primary text-lg font-bold text-white text-center p-3 rounded-t-lg"),
-                Table(
-                    Tr(
-                        Th("Error", cls="bg-red-700 text-center p-3 text-white border-b-2 border-red-300")
-                    ),
-                    *[Tr(Td(error, cls="p-4 border-b border-red-200 text-red-500 hover:bg-gray-50")) for error in errores],
-                    cls="w-full border border-red-700 shadow-md"
+        return card(
+            Table(
+                Tr(
+                    Th()
                 ),
-                cls="max-w-lg mx-auto mt-8 shadow-lg rounded-lg overflow-hidden border border-red-700"
+                *[Tr(Td(error, cls="p-4 border-b border-red-200 text-red-500 hover:bg-gray-50")) for error in errores],
+                cls="w-full border border-red-700 shadow-md"
             ),
-            cls="flex justify-center mt-8 space-x-6"  # Espaciado entre el formulario y la tabla de errores
+            title="Errores de Validación",
         )
         
     return result_mmk(v_lambda, v_mu, v_k)
@@ -144,19 +137,15 @@ def r_mms(v_lambda : float, v_mu : float, v_c : int):
 
     if errores:
         # Si hay errores, los mostramos en una estructura tipo tabla con estilos mejorados
-        return Div(
-            Div(
-                Div("Errores de Validación", cls="bg-primary text-lg font-bold text-white text-center p-3 rounded-t-lg"),
-                Table(
-                    Tr(
-                        Th("Error", cls="bg-red-700 text-center p-3 text-white border-b-2 border-red-300")
-                    ),
-                    *[Tr(Td(error, cls="p-4 border-b border-red-200 text-red-500 hover:bg-gray-50")) for error in errores],
-                    cls="w-full border border-red-700 shadow-md"
+        return card(
+            Table(
+                Tr(
+                    Th()
                 ),
-                cls="max-w-lg mx-auto mt-8 shadow-lg rounded-lg overflow-hidden border border-red-700"
+                *[Tr(Td(error, cls="p-4 border-b border-red-200 text-red-500 hover:bg-gray-50")) for error in errores],
+                cls="w-full border border-red-700 shadow-md"
             ),
-            cls="flex justify-center mt-8 space-x-6"  # Espaciado entre el formulario y la tabla de errores
+            title="Errores de Validación",
         )
           
     return result_mms(v_lambda, v_mu, v_c)
@@ -200,19 +189,15 @@ def r_mmsk(v_lambda : float, v_mu : float, v_c : int, v_k : int):
 
     if errores:
         # Si hay errores, los mostramos en una estructura tipo tabla con estilos mejorados
-        return Div(
-            Div(
-                Div("Errores de Validación", cls="bg-primary text-lg font-bold text-white text-center p-3 rounded-t-lg"),
-                Table(
-                    Tr(
-                        Th("Error", cls="bg-red-700 text-center p-3 text-white border-b-2 border-red-300")
-                    ),
-                    *[Tr(Td(error, cls="p-4 border-b border-red-200 text-red-500 hover:bg-gray-50")) for error in errores],
-                    cls="w-full border border-red-700 shadow-md"
+        return card(
+            Table(
+                Tr(
+                    Th()
                 ),
-                cls="max-w-lg mx-auto mt-8 shadow-lg rounded-lg overflow-hidden border border-red-700"
+                *[Tr(Td(error, cls="p-4 border-b border-red-200 text-red-500 hover:bg-gray-50")) for error in errores],
+                cls="w-full border border-red-700 shadow-md"
             ),
-            cls="flex justify-center mt-8 space-x-6"  # Espaciado entre el formulario y la tabla de errores
+            title="Errores de Validación",
         )
         
     return result_mmsk(v_lambda, v_mu, v_c, v_k)
