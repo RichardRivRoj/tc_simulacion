@@ -38,20 +38,27 @@ def r_mm1(v_lambda : float, v_mu : float):
     # Validar los valores
     errores = []
     if v_lambda <= 0:
-        errores.append("λ debe ser mayor a 0.")
+        errores.append("⚠️ λ debe ser mayor a 0.")
     if v_mu <= 0:
-        errores.append("μ debe ser mayor a 0.")
+        errores.append("⚠️ μ debe ser mayor a 0.")
     if v_lambda >= v_mu:
-        errores.append("λ debe ser menor que μ.")
+        errores.append("⚠️ λ debe ser menor que μ.")
 
     if errores:
-        # Si hay errores, los mostramos en el div de respuesta
+        # Si hay errores, los mostramos en una estructura tipo tabla con estilos mejorados
         return Div(
             Div(
-                *[Div(error, cls="text-red-500") for error in errores], 
-                cls="flex flex-col items-center"
+                Div("Errores de Validación", cls="bg-primary text-lg font-bold text-white text-center p-3 rounded-t-lg"),
+                Table(
+                    Tr(
+                        Th("Error", cls="bg-red-700 text-center p-3 text-white border-b-2 border-red-300")
+                    ),
+                    *[Tr(Td(error, cls="p-4 border-b border-red-200 text-red-500 hover:bg-gray-50")) for error in errores],
+                    cls="w-full border border-red-700 shadow-md"
+                ),
+                cls="max-w-lg mx-auto mt-8 shadow-lg rounded-lg overflow-hidden border border-red-700"
             ),
-            cls="overflow-hidden mb-auto bg-white border border-gray-200 rounded-lg shadow"
+            cls="flex justify-center mt-8 space-x-6"  # Espaciado entre el formulario y la tabla de errores
         )
     
     return result_mm1(v_lambda, v_mu)
@@ -76,22 +83,29 @@ def r_mm1(v_lambda : float, v_mu : float, v_k: int):
     # Validar los valores
     errores = []
     if v_lambda <= 0:
-        errores.append("λ debe ser mayor a 0.")
+        errores.append("⚠️ λ debe ser mayor a 0.")
     if v_mu <= 0:
-        errores.append("μ debe ser mayor a 0.")
+        errores.append("⚠️ μ debe ser mayor a 0.")
     if v_k <= 0:
-        errores.append("K debe ser mayor a 0")
+        errores.append("⚠️ K debe ser mayor a 0")
     if v_k == type(float(v_k)):
-        errores.append("K tiene que ser un número entero")
+        errores.append("⚠️ K tiene que ser un número entero")
 
     if errores:
-        # Si hay errores, los mostramos en el div de respuesta
+        # Si hay errores, los mostramos en una estructura tipo tabla con estilos mejorados
         return Div(
             Div(
-                *[Div(error, cls="text-red-500") for error in errores], 
-                cls="flex flex-col items-center"
+                Div("Errores de Validación", cls="bg-primary text-lg font-bold text-white text-center p-3 rounded-t-lg"),
+                Table(
+                    Tr(
+                        Th("Error", cls="bg-red-700 text-center p-3 text-white border-b-2 border-red-300")
+                    ),
+                    *[Tr(Td(error, cls="p-4 border-b border-red-200 text-red-500 hover:bg-gray-50")) for error in errores],
+                    cls="w-full border border-red-700 shadow-md"
+                ),
+                cls="max-w-lg mx-auto mt-8 shadow-lg rounded-lg overflow-hidden border border-red-700"
             ),
-            cls="overflow-hidden mb-auto bg-white border border-gray-200 rounded-lg shadow"
+            cls="flex justify-center mt-8 space-x-6"  # Espaciado entre el formulario y la tabla de errores
         )
         
     return result_mmk(v_lambda, v_mu, v_k)
@@ -118,24 +132,33 @@ def r_mms(v_lambda : float, v_mu : float, v_c : int):
     # Validar los valores
     errores = []
     if v_lambda <= 0:
-        errores.append("λ debe ser mayor a 0.")
+        errores.append("⚠️ λ debe ser mayor a 0.")
     if v_mu <= 0:
-        errores.append("μ debe ser mayor a 0.")
+        errores.append("⚠️ μ debe ser mayor a 0.")
     if v_lambda >= v_c * v_mu:
-        errores.append("λ debe ser menor que c * μ.")
+        errores.append("⚠️ λ debe ser menor que c * μ.")
     if v_c <= 0:
-        errores.append("c debe ser mayor a 0")
+        errores.append("⚠️ c debe ser mayor a 0")
     if v_c == type(float(v_c)):
-        errores.append("c tiene que ser un número entero")
+        errores.append("⚠️ c tiene que ser un número entero")
 
     if errores:
-        # Si hay errores, los mostramos en el div de respuesta
+        # Si hay errores, los mostramos en una estructura tipo tabla con estilos mejorados
         return Div(
             Div(
-                *[Div(error, cls="text-red-500") for error in errores], 
-                cls="flex flex-col items-center"
+                Div("Errores de Validación", cls="bg-primary text-lg font-bold text-white text-center p-3 rounded-t-lg"),
+                Table(
+                    Tr(
+                        Th("Error", cls="bg-red-700 text-center p-3 text-white border-b-2 border-red-300")
+                    ),
+                    *[Tr(Td(error, cls="p-4 border-b border-red-200 text-red-500 hover:bg-gray-50")) for error in errores],
+                    cls="w-full border border-red-700 shadow-md"
+                ),
+                cls="max-w-lg mx-auto mt-8 shadow-lg rounded-lg overflow-hidden border border-red-700"
             ),
-        )   
+            cls="flex justify-center mt-8 space-x-6"  # Espaciado entre el formulario y la tabla de errores
+        )
+          
     return result_mms(v_lambda, v_mu, v_c)
 
 
@@ -161,28 +184,36 @@ def r_mmsk(v_lambda : float, v_mu : float, v_c : int, v_k : int):
     # Validar los valores
     errores = []
     if v_lambda <= 0:
-        errores.append("λ debe ser mayor a 0.")
+        errores.append("⚠️ λ debe ser mayor a 0.")
     if v_mu <= 0:
-        errores.append("μ debe ser mayor a 0.")
+        errores.append("⚠️ μ debe ser mayor a 0.")
     if v_lambda >= v_c * v_mu:
-        errores.append("λ debe ser menor que c * μ.")
+        errores.append(f"⚠️ λ={v_lambda} debe ser menor que (c * μ)={v_c*v_mu}")
     if v_c <= 0:
-        errores.append("c debe ser mayor a 0")
+        errores.append("⚠️ c debe ser mayor a 0")
     if v_c == type(float(v_c)):
-        errores.append("c tiene que ser un número entero")
+        errores.append("⚠️ c tiene que ser un número entero")
     if v_k <= v_c:
-        errores.append("K debe ser mayor que c")
+        errores.append("⚠️ K debe ser mayor que c")
     if v_k == type(float(v_k)) or v_k <= 0:
-        errores.append("K tiene que ser un número entero mayor a 0")
+        errores.append("⚠️ K tiene que ser un número entero mayor a 0")
 
     if errores:
-        # Si hay errores, los mostramos en el div de respuesta
+        # Si hay errores, los mostramos en una estructura tipo tabla con estilos mejorados
         return Div(
             Div(
-                *[Div(error, cls="text-red-500") for error in errores], 
-                cls="flex flex-col items-center"
+                Div("Errores de Validación", cls="bg-primary text-lg font-bold text-white text-center p-3 rounded-t-lg"),
+                Table(
+                    Tr(
+                        Th("Error", cls="bg-red-700 text-center p-3 text-white border-b-2 border-red-300")
+                    ),
+                    *[Tr(Td(error, cls="p-4 border-b border-red-200 text-red-500 hover:bg-gray-50")) for error in errores],
+                    cls="w-full border border-red-700 shadow-md"
+                ),
+                cls="max-w-lg mx-auto mt-8 shadow-lg rounded-lg overflow-hidden border border-red-700"
             ),
-        ) 
+            cls="flex justify-center mt-8 space-x-6"  # Espaciado entre el formulario y la tabla de errores
+        )
         
     return result_mmsk(v_lambda, v_mu, v_c, v_k)
 
