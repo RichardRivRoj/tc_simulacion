@@ -176,7 +176,7 @@ def r_mmsk(v_lambda : float, v_mu : float, v_c : int, v_k : int):
         errores.append("⚠️ λ debe ser mayor a 0.")
     if v_mu <= 0:
         errores.append("⚠️ μ debe ser mayor a 0.")
-    if v_lambda >= v_c * v_mu:
+    if v_lambda > v_c * v_mu:
         errores.append(f"⚠️ λ={v_lambda} debe ser menor que (c * μ)={v_c*v_mu}")
     if v_c <= 0:
         errores.append("⚠️ c debe ser mayor a 0")
