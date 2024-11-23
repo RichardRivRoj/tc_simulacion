@@ -11,6 +11,7 @@ from views.result_mms import result_mms
 from views.calc_mmsk import calc_mmsk
 from views.result_mmsk import result_mmsk
 from views.help import help
+from views.simulation_data import simulation_data
 
 app, rt = fast_app()
 
@@ -209,5 +210,11 @@ def graph(x_data: str, y_data: str, title: str, x_label: str, y_label: str):
 @rt("/help", methods=['GET', "POST"])
 def v_help():
     return help()
+
+
+@rt("/simulation", methods=["GET"])
+def simulation():
+    return simulation_data()
+
 
 serve()
